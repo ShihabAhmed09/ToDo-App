@@ -73,10 +73,10 @@
                                 </div>
                                 <div class="col-md-2">
                                     <a href="{% url 'main_app:update-task' task.id %}"
-                                       class="btn btn-primary btn-sm {% if task.completed %}disabled{% endif %}">
+                                       class="btn btn-primary btn-sm me-2 {% if task.completed %}disabled{% endif %}">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="{% url 'main_app:delete-task' task.id %}" class="btn btn-danger  btn-sm">
+                                    <a href="{% url 'main_app:delete-task' task.id %}" class="btn btn-danger btn-sm">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </div>
