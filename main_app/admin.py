@@ -6,4 +6,4 @@ from .models import Task
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'start_time', 'end_time', 'completed']
+    list_display = ['id', 'name', 'start_time', 'completed']

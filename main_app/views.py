@@ -14,7 +14,7 @@ def home(request):
             return redirect('main_app:home')
     else:
         form = TaskCreateForm(label_suffix='')
-    tasks = Task.objects.all().order_by('-start_time')
+    tasks = Task.objects.all()
 
     task_left = tasks.filter(completed='False').count()
     task_completed = tasks.filter(completed='True').count()
@@ -51,7 +51,7 @@ def search_task(request):
     query = request.GET.get('q')
     query = query.strip()
     if query:
-        tasks = Task.objects.filter(Q(name__icontains=query)).order_by('-start_time')
+        tasks = Task.objects.filter(Q(name__icontains=query))
     else:
         tasks = Task.objects.none()
 
