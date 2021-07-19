@@ -8,7 +8,6 @@ class TaskCreateForm(forms.ModelForm):
         fields = ['name']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add task here...'}),
-            # 'end_time': forms.DateTimeInput(attrs={'id': 'datepicker'})
         }
 
 
