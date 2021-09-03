@@ -14,7 +14,16 @@ def home(request):
             return redirect('main_app:home')
     else:
         form = TaskCreateForm(label_suffix='')
+
     tasks = Task.objects.all()
+
+    query = request.GET.get('q')
+
+    if query:
+        query = query.strip()
+        tasks = tasks.filter(Q(name__icontains=query))
+    else:
+        tasks = tasks
 
     task_left = tasks.filter(completed='False').count()
     task_completed = tasks.filter(completed='True').count()
@@ -45,19 +54,3 @@ def delete_task(request, pk):
         return redirect('main_app:home')
     context = {'task': task}
     return render(request, 'main_app/delete_task.html', context)
-
-
-def search_task(request):
-    query = request.GET.get('q')
-    query = query.strip()
-    if query:
-        tasks = Task.objects.filter(Q(name__icontains=query))
-    else:
-        tasks = Task.objects.none()
-
-    task_left = tasks.filter(completed='False').count()
-    task_completed = tasks.filter(completed='True').count()
-
-    context = {'tasks': tasks, 'query': query, 'query_length': len(query), 'task_left': task_left,
-               'task_completed': task_completed}
-    return render(request, 'main_app/search_task.html', context)

@@ -11,6 +11,9 @@
             <div class="row">
                 <div class="col-md-3 p-4 bg-light">
                     <div class="sidebar rounded">
+                        <div class="mb-4">
+                            <a href="{% url 'main_app:home' %}" class="btn btn-secondary"><i class="fas fa-home"></i></a>
+                        </div>
                         <ul class="list-group mb-3">
                             <li class="list-group-item d-flex justify-content-between lh-sm text-success">
                                 <div>
@@ -54,7 +57,7 @@
                             {% endfor %}
                         {% endif %}
                     </form>
-                    <form method="get" action="{% url 'main_app:search-task' %}" class="px-4">
+                    <form method="get" action="" class="px-4">
                         <div class="row mb-4">
                             <div class="input-group">
                                 <input class="form-control" id="query" name="q" type="search" aria-label="Search"
@@ -90,6 +93,10 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                    {% empty %}
+                    <div class="p-4">
+                        <p class="alert alert-warning text-center">No tasks found.</p>
                     </div>
                     {% endfor %}
                 </div>
